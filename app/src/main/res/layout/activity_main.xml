@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:scrollbars="vertical">
 
-    <RelativeLayout
-        android:id="@+id/rl_name_id"
+    <LinearLayout
+        android:id="@+id/main_LL"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/background_blue_toolbar">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/nameTxtV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:background="@drawable/background_blue_toolbar"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:padding="10dp"/>
-        
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/rl_name_id">
+            android:padding="13dp"/>
 
         <TextView
             android:id="@+id/single_service_id"
@@ -90,7 +82,20 @@
             android:textSize="20sp"
             android:textStyle="bold"/>
 
+        <TextView
+            android:id="@+id/clients_data_id"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/background_gray"
+            android:gravity="center"
+            android:text="Clients Data"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
     </LinearLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

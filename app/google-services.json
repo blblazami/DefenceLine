@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "929942931974",
+    "firebase_url": "https://defenceline-cc930.firebaseio.com",
+    "project_id": "defenceline-cc930",
+    "storage_bucket": "defenceline-cc930.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929942931974:android:f74e6ffbd8013bfc9f5187",
+        "android_client_info": {
+          "package_name": "com.example.defenceline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929942931974-jip7r9r0vq5u1enqk9k4vcpeopu4q9f2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.defenceline",
+            "certificate_hash": "63afdfe3c5ecfeb5671162b5c44b1fc82b1586e2"
+          }
+        },
+        {
+          "client_id": "929942931974-vme2mgpv9aeim6hsgrist27qgdv9lidr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_8rDjb414j9OlLPY-hZ3PMh45WUdT1t4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929942931974-vme2mgpv9aeim6hsgrist27qgdv9lidr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

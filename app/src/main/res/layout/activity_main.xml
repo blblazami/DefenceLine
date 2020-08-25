@@ -11,20 +11,10 @@
 
     <LinearLayout
         android:id="@+id/main_LL"
+        android:background="@drawable/red_cover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/nameTxtV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_blue_toolbar"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="13dp"/>
 
         <TextView
             android:id="@+id/single_service_id"
@@ -36,12 +26,12 @@
             android:background="@drawable/background_gray"
             android:gravity="center"
             android:text="Single Service"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/light_red"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/Contract_Service"
+            android:id="@+id/contract_service"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="20dp"
@@ -50,7 +40,7 @@
             android:background="@drawable/background_gray"
             android:gravity="center"
             android:text="Contract Service"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/light_red"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
@@ -64,12 +54,12 @@
             android:background="@drawable/background_gray"
             android:gravity="center"
             android:text="Create Invoice"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/light_red"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/rcpt_voucher_id"
+            android:id="@+id/receipt_voucher"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="20dp"
@@ -78,12 +68,12 @@
             android:background="@drawable/background_gray"
             android:gravity="center"
             android:text="Receipt Voucher"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/light_red"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/clients_data_id"
+            android:id="@+id/clients_data"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="20dp"
@@ -92,7 +82,7 @@
             android:background="@drawable/background_gray"
             android:gravity="center"
             android:text="Clients Data"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/light_red"
             android:textSize="20sp"
             android:textStyle="bold"/>
 

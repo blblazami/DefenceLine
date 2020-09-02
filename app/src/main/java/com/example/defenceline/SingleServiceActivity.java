@@ -106,7 +106,7 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
         mProgressDialog.setMessage("Please Wait");
         mProgressDialog.show();
         String id = FirebaseDatabase.getInstance().getReference().push().getKey();
-        Client client = new Client(name, phoneNo, location, price, id);
+        Client client = new Client(name, phoneNo, location, price);
         FirebaseDatabase.getInstance().getReference("Clients").child(id).setValue(client).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

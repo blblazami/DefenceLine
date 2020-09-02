@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".ContractServiceActivity"
     android:scrollbars="vertical">
 
 
@@ -152,7 +152,7 @@
             android:layout_gravity="center_vertical"/>
 
         <EditText
-            android:id="@+id/enter_price_id"
+            android:id="@+id/enter_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter Price:"
@@ -162,7 +162,7 @@
             android:gravity="center|bottom"/>
 
         <Button
-            android:id="@+id/save_Button_id"
+            android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

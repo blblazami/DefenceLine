@@ -1,5 +1,6 @@
 package com.example.defenceline;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,14 +16,20 @@ import android.widget.ListView;
 
 import com.example.defenceline.adapters.ClientAdapter;
 import com.example.defenceline.model.Client;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ClientDataActivity extends AppCompatActivity {
 
     final int REQ_CODE_MORE = 1;
     ClientAdapter mClientAdapter;
 
+    private List<Client> mClients;
     private RecyclerView mRecyclerView;
     private Button more;
 
@@ -50,6 +57,28 @@ public class ClientDataActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), this.getClass());
                 startActivityForResult(intent, REQ_CODE_MORE);
+
+                getData();
+            }
+        });
+    }
+
+    private void getData() {
+        String id = FirebaseDatabase.getInstance().getReference().getKey();
+        FirebaseDatabase.getInstance().getReference().child("Clients").child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mClients.clear();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Client client =dataSnapshot.getValue(Client.class);
+                    mClients.add(client);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

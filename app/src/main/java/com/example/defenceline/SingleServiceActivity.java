@@ -89,7 +89,7 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
                 String txtLocation = location.getText().toString();
                 String txtPrice = price.getText().toString();
 
-                if (TextUtils.isEmpty(txtName) || TextUtils.isEmpty(txtPhoneNo)
+                if (TextUtils.isEmpty(txtName) || TextUtils.isEmpty((txtPhoneNo))
                 || TextUtils.isEmpty(txtLocation) || TextUtils.isEmpty(txtPrice)){
                     Toast.makeText(SingleServiceActivity.this, "Mandatory Missed", Toast.LENGTH_SHORT).show();
                 } else if (txtPhoneNo.length() < 10){

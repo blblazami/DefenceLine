@@ -1,6 +1,10 @@
 package com.example.defenceline;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerViewAccessibilityDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +20,10 @@ import java.util.ArrayList;
 
 public class ClientDataActivity extends AppCompatActivity {
 
-    private ListView clientList;
+    final int REQ_CODE_MORE = 1;
+    ClientAdapter mClientAdapter;
+
+    private RecyclerView mRecyclerView;
     private Button more;
 
     @Override
@@ -25,21 +32,31 @@ public class ClientDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_client_data);
 
         more = findViewById(R.id.more_button);
-        clientList = findViewById(R.id.client_list);
+        mRecyclerView = findViewById(R.id.client_rv);
 
         ArrayList<Client> clients = new ArrayList<>();
         clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
         clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
         clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
 
-        ClientAdapter adapter = new ClientAdapter(this, R.layout.custom_client_data_show,clients);
-        clientList.setAdapter(adapter);
+        ClientAdapter adapter = new ClientAdapter(clients);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(adapter);
 
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getBaseContext(), this.getClass());
+                startActivityForResult(intent, REQ_CODE_MORE);
             }
         });
     }
-}
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        if (requestCode == REQ_CODE_MORE && resultCode == RESULT_OK){
+//            mClientAdapter.addItem();
+//        }
+    }

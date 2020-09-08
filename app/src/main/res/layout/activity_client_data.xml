@@ -20,12 +20,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"/>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_above="@id/more_button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:id="@+id/client_list"/>
+        android:id="@+id/client_rv"/>
 
 </RelativeLayout>

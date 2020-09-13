@@ -64,14 +64,13 @@ public class ClientDataActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        String id = FirebaseDatabase.getInstance().getReference().getKey();
-        FirebaseDatabase.getInstance().getReference().child("Clients").child(id).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Clients").child(mClients.toString()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mClients.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Client client =dataSnapshot.getValue(Client.class);
+                    Client client = dataSnapshot.getValue(Client.class);
                     mClients.add(client);
                 }
             }

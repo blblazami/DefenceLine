@@ -74,7 +74,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_client_data_show, null, false);
         clientViewHolder viewHolder = new clientViewHolder(v);
 
-        return null;
+        return viewHolder;
     }
 
     @Override

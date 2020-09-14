@@ -39,12 +39,12 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
         public clientViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.name);
-            phone = itemView.findViewById(R.id.phone);
-            location = itemView.findViewById(R.id.location);
-            time = itemView.findViewById(R.id.time);
-            date = itemView.findViewById(R.id.date);
-            price = itemView.findViewById(R.id.price);
+            name = itemView.findViewById(R.id.name_field);
+            phone = itemView.findViewById(R.id.phone_field);
+            location = itemView.findViewById(R.id.location_field);
+            time = itemView.findViewById(R.id.time_field);
+            date = itemView.findViewById(R.id.date_field);
+            price = itemView.findViewById(R.id.price_field);
         }
     }
 

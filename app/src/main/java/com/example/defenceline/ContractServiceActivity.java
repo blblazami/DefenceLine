@@ -82,31 +82,51 @@ public class ContractServiceActivity extends AppCompatActivity implements DatePi
                 String txtPhoneNo = phoneNo.getText().toString();
                 String txtLocation = location.getText().toString();
                 String txtPrice = price.getText().toString();
+                String txtDate = date.getText().toString();
+                String txtTime = time.getText().toString();
+                String serviceType = serviceChecked();
 
-                if (TextUtils.isEmpty(txtName) || TextUtils.isEmpty(txtPhoneNo)
-                        || TextUtils.isEmpty(txtLocation) || TextUtils.isEmpty(txtPrice)) {
+                if (TextUtils.isEmpty(txtName) || TextUtils.isEmpty((txtPhoneNo))
+                        || TextUtils.isEmpty(txtLocation) || TextUtils.isEmpty(txtPrice)
+                        || TextUtils.isEmpty(txtDate) || TextUtils.isEmpty(txtTime)
+                        || serviceType == null){
                     Toast.makeText(ContractServiceActivity.this, "Mandatory Missed", Toast.LENGTH_SHORT).show();
-                } else if (txtPhoneNo.length() < 10) {
+                } else if (txtPhoneNo.length() < 10){
                     Toast.makeText(ContractServiceActivity.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
                 } else {
-                    registerClient(txtName, txtPhoneNo, txtLocation, txtPrice);
+                    registerClient(txtName, txtPhoneNo, txtLocation, txtPrice, txtDate, txtTime, serviceType);
                 }
             }
         });
     }
 
-    private void registerClient(String name, String phoneNo, String location, String price) {
+    private void registerClient(String name, String phoneNo, String location, String date, String time, String serviceType, String price) {
 
         mProgressDialog.setMessage("Please Wait");
         mProgressDialog.show();
         String id = FirebaseDatabase.getInstance().getReference().push().getKey();
-        Client client = new Client(name, phoneNo, location, price);
+        Client client = new Client(name, phoneNo, location, date, time, serviceType, price);
         FirebaseDatabase.getInstance().getReference("Companies").child(id).setValue(client).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 mProgressDialog.dismiss();
             }
         });
+    }
+
+    // checking services
+    public String serviceChecked(){
+        String service = null;
+        if (liquid.isChecked()){
+            service = liquid.getText().toString();
+        } else if (powder.isChecked()){
+            service = powder.getText().toString();
+        } else if (gel.isChecked()){
+            service = gel.getText().toString();
+        } else {
+            service = null;
+        }
+        return service;
     }
 
     // showing date dialog

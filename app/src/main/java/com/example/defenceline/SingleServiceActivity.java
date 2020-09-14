@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
     private EditText name, phoneNo, location, price;
     private Button date, time, save;
     private CheckBox liquid, powder, gel;
+    private TextView dateView, timeView;
 
     private int mHour, mMinutes;
 
@@ -52,6 +54,8 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
         liquid = findViewById(R.id.liquid_chkbox);
         powder = findViewById(R.id.powder_chkbox);
         gel = findViewById(R.id.gel_chkbox);
+        dateView = findViewById(R.id.date_view);
+        timeView = findViewById(R.id.time_view);
 
         mRootReference = FirebaseDatabase.getInstance().getReference();
         mProgressDialog = new ProgressDialog(this);
@@ -73,7 +77,7 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
                 TimePickerDialog timePickerDialog = new TimePickerDialog(SingleServiceActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        Toast.makeText(SingleServiceActivity.this, "" + hourOfDay + ":" + minute, Toast.LENGTH_SHORT).show();
+                        timeView.setText(hourOfDay + ":" + minute);
                     }
                 },mHour,mMinutes,false);
                 timePickerDialog.show();
@@ -87,26 +91,32 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
                 String txtName = name.getText().toString();
                 String txtPhoneNo = phoneNo.getText().toString();
                 String txtLocation = location.getText().toString();
+                String txtDate = dateView.getText().toString();
+                String txtTime = timeView.getText().toString();
+                String serviceType = serviceChecked();
                 String txtPrice = price.getText().toString();
 
+
                 if (TextUtils.isEmpty(txtName) || TextUtils.isEmpty((txtPhoneNo))
-                || TextUtils.isEmpty(txtLocation) || TextUtils.isEmpty(txtPrice)){
+                || TextUtils.isEmpty(txtLocation) || TextUtils.isEmpty(txtPrice)
+                || TextUtils.isEmpty(txtDate) || TextUtils.isEmpty(txtTime)
+                || serviceType == null){
                     Toast.makeText(SingleServiceActivity.this, "Mandatory Missed", Toast.LENGTH_SHORT).show();
                 } else if (txtPhoneNo.length() < 10){
                     Toast.makeText(SingleServiceActivity.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
                 } else {
-                    registerClient(txtName, txtPhoneNo, txtLocation, txtPrice);
+                    registerClient(txtName, txtPhoneNo, txtLocation, txtDate, txtTime, serviceType, txtPrice);
                 }
             }
         });
     }
 
-    private void registerClient(String name, String phoneNo, String location, String price) {
+    private void registerClient(String name, String phoneNo, String location, String date, String time, String serviceType, String price) {
 
         mProgressDialog.setMessage("Please Wait");
         mProgressDialog.show();
         String id = FirebaseDatabase.getInstance().getReference().push().getKey();
-        Client client = new Client(name, phoneNo, location, price);
+        Client client = new Client(name, phoneNo, location, date, time, serviceType, price);
         FirebaseDatabase.getInstance().getReference("Clients").child(id).setValue(client).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -116,21 +126,49 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
 
     }
 
+    // checking services
+    public String serviceChecked(){
+        String service = null;
+        if (liquid.isChecked() && powder.isChecked() && gel.isChecked()){
+            service = "Liquid, Powder, Gel";
+        } else if (liquid.isChecked() && powder.isChecked()){
+            service = "Liquid, Powder";
+        } else if (liquid.isChecked() && gel.isChecked()){
+            service = "Liquid, Gel";
+        } else if (powder.isChecked() && gel.isChecked()){
+            service = "Powder, Gel";
+        } else {
+            service = null;
+        }
+        return service;
+    }
+
     // showing date dialog
     private void showDatePickerDialog() {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
-                this, this,
+                this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month++;
+                dateView.setText(dayOfMonth + "/" + month + "/" + year);
+            }
+        },
                 Calendar.getInstance().get(Calendar.YEAR),
                 Calendar.getInstance().get(Calendar.MONTH),
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
     }
 
-    // setting up date method
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        month+=1;
-        String datepick = "day/month/year: " + dayOfMonth + "/" + month + "/" + year;
-        date.setText(datepick);
+
     }
+
+    // setting up date method
+//    @Override
+//    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//        month+=1;
+//        String datepick = "day/month/year: " + dayOfMonth + "/" + month + "/" + year;
+//        date.setText(datepick);
+//    }
 }

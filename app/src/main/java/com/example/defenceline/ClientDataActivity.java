@@ -42,9 +42,9 @@ public class ClientDataActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.client_rv);
 
         ArrayList<Client> clients = new ArrayList<>();
-        clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
-        clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
-        clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
+//        clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
+//        clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
+//        clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
 
         ClientAdapter adapter = new ClientAdapter(clients);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

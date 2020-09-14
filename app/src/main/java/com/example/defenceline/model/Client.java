@@ -2,15 +2,18 @@ package com.example.defenceline.model;
 
 public class Client {
 
-    private String name, phoneNo, location, price;
+    private String name, phoneNo, location, date, time, serviceType, price;
 
     public Client() {
     }
 
-    public Client(String name, String phoneNo, String location, String price) {
+    public Client(String name, String phoneNo, String location, String date, String time, String serviceType, String price) {
         this.name = name;
         this.phoneNo = phoneNo;
         this.location = location;
+        this.date = date;
+        this.time = time;
+        this.serviceType = serviceType;
         this.price = price;
     }
 
@@ -36,6 +39,30 @@ public class Client {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
     }
 
     public String getPrice() {

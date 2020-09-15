@@ -28,8 +28,8 @@ public class ClientDataActivity extends AppCompatActivity {
 
     final int REQ_CODE_MORE = 1;
     ClientAdapter mClientAdapter;
+    private ArrayList<Client> mClients;
 
-    private List<Client> mClients;
     private RecyclerView mRecyclerView;
     private Button more;
 
@@ -38,33 +38,19 @@ public class ClientDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_data);
 
-        more = findViewById(R.id.more_button);
         mRecyclerView = findViewById(R.id.client_rv);
+        mClients = new ArrayList<>();
 
-        ArrayList<Client> clients = new ArrayList<>();
-//        clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
-//        clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
-//        clients.add(new Client("Belal", "0555607665", "www.google.com", "250"));
 
-        ClientAdapter adapter = new ClientAdapter(clients);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setHasFixedSize(true);
+        ClientAdapter adapter = new ClientAdapter(mClients);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(adapter);
-
-        more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), this.getClass());
-                startActivityForResult(intent, REQ_CODE_MORE);
-
-                getData();
-            }
-        });
     }
 
     private void getData() {
-        FirebaseDatabase.getInstance().getReference().child("Clients").child(mClients.toString()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Clients").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mClients.clear();
@@ -82,7 +68,13 @@ public class ClientDataActivity extends AppCompatActivity {
         });
     }
 
-//    @Override
+    @Override
+    protected void onStart() {
+        getData();
+        super.onStart();
+    }
+
+    //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 //        if (requestCode == REQ_CODE_MORE && resultCode == RESULT_OK){
 //            mClientAdapter.addItem();

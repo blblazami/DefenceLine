@@ -83,6 +83,8 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
         holder.name.setText(c.getName());
         holder.phone.setText(c.getPhoneNo());
         holder.location.setText(c.getLocation());
+        holder.date.setText(c.getDate());
+        holder.time.setText(c.getTime());
         holder.price.setText(c.getPrice());
     }
 
@@ -104,22 +106,22 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
 //            view = LayoutInflater.from(context).inflate(resource, parent, false);
 //        }
 //
-////        ImageView back = view.findViewById(R.id.back);
-////        ImageView search = view.findViewById(R.id.search);
+//        ImageView back = view.findViewById(R.id.back);
+//        ImageView search = view.findViewById(R.id.search);
 //        TextView name = view.findViewById(R.id.name);
 //        TextView phone = view.findViewById(R.id.phone);
 //        TextView location = view.findViewById(R.id.location);
 //        TextView time = view.findViewById(R.id.time);
 //        TextView date = view.findViewById(R.id.date);
 //        TextView price = view.findViewById(R.id.price);
-////        Button more = view.findViewById(R.id.more_button);
+//        Button more = view.findViewById(R.id.more_button);
 //
 //        Client client = getItem(position);
 //        name.setText(client.getName());
 //        phone.setText(client.getPhoneNo());
 //        location.setText(client.getLocation());
-////        time.setText(client.getTime() + "");
-////        date.setText(client.getDate() + "");
+//        time.setText(client.getTime() + "");
+//        date.setText(client.getDate() + "");
 //        price.setText(client.getPrice() + "");
 //
 //        return view;

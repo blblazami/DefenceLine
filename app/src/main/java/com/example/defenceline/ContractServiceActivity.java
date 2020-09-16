@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -24,8 +26,10 @@ import java.util.Calendar;
 public class ContractServiceActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private EditText name, phoneNo, location, price;
-    private Button date, time, save;
+    private ImageButton date, time;
+    private Button save;
     private CheckBox liquid, powder, gel;
+    private TextView dateView, timeView;
 
     private int mHour, mMinutes;
 
@@ -47,6 +51,8 @@ public class ContractServiceActivity extends AppCompatActivity implements DatePi
         liquid = findViewById(R.id.liquid_chkbox);
         powder = findViewById(R.id.powder_chkbox);
         gel = findViewById(R.id.gel_chkbox);
+        dateView = findViewById(R.id.date_view);
+        timeView = findViewById(R.id.time_view);
 
         mProgressDialog = new ProgressDialog(this);
 
@@ -67,7 +73,7 @@ public class ContractServiceActivity extends AppCompatActivity implements DatePi
                 TimePickerDialog timePickerDialog = new TimePickerDialog(ContractServiceActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        Toast.makeText(ContractServiceActivity.this, "" + hourOfDay + ":" + minute, Toast.LENGTH_SHORT).show();
+                        timeView.setText(hourOfDay + ":" + minute);
                     }
                 }, mHour, mMinutes, false);
                 timePickerDialog.show();
@@ -81,10 +87,10 @@ public class ContractServiceActivity extends AppCompatActivity implements DatePi
                 String txtName = name.getText().toString();
                 String txtPhoneNo = phoneNo.getText().toString();
                 String txtLocation = location.getText().toString();
-                String txtPrice = price.getText().toString();
-                String txtDate = date.getText().toString();
-                String txtTime = time.getText().toString();
+                String txtDate = dateView.getText().toString();
+                String txtTime = timeView.getText().toString();
                 String serviceType = serviceChecked();
+                String txtPrice = price.getText().toString();
 
                 if (TextUtils.isEmpty(txtName) || TextUtils.isEmpty((txtPhoneNo))
                         || TextUtils.isEmpty(txtLocation) || TextUtils.isEmpty(txtPrice)
@@ -94,7 +100,7 @@ public class ContractServiceActivity extends AppCompatActivity implements DatePi
                 } else if (txtPhoneNo.length() < 10){
                     Toast.makeText(ContractServiceActivity.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
                 } else {
-                    registerClient(txtName, txtPhoneNo, txtLocation, txtPrice, txtDate, txtTime, serviceType);
+                    registerClient(txtName, txtPhoneNo, txtLocation, txtDate, txtTime, serviceType, txtPrice);
                 }
             }
         });
@@ -117,12 +123,14 @@ public class ContractServiceActivity extends AppCompatActivity implements DatePi
     // checking services
     public String serviceChecked(){
         String service = null;
-        if (liquid.isChecked()){
-            service = liquid.getText().toString();
-        } else if (powder.isChecked()){
-            service = powder.getText().toString();
-        } else if (gel.isChecked()){
-            service = gel.getText().toString();
+        if (liquid.isChecked() && powder.isChecked() && gel.isChecked()){
+            service = "Liquid, Powder, Gel";
+        } else if (liquid.isChecked() && powder.isChecked()){
+            service = "Liquid, Powder";
+        } else if (liquid.isChecked() && gel.isChecked()){
+            service = "Liquid, Gel";
+        } else if (powder.isChecked() && gel.isChecked()){
+            service = "Powder, Gel";
         } else {
             service = null;
         }
@@ -132,7 +140,13 @@ public class ContractServiceActivity extends AppCompatActivity implements DatePi
     // showing date dialog
     private void showDatePickerDialog() {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
-                this, this,
+                this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month++;
+                dateView.setText(dayOfMonth + "/" + month + "/" + year);
+            }
+        },
                 Calendar.getInstance().get(Calendar.YEAR),
                 Calendar.getInstance().get(Calendar.MONTH),
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
@@ -142,8 +156,8 @@ public class ContractServiceActivity extends AppCompatActivity implements DatePi
     // setting up date method
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        month+=1;
+        /*month+=1;
         String datepick = "day/month/year: " + dayOfMonth + "/" + month + "/" + year;
-        date.setText(datepick);
+        date.setText(datepick);*/
     }
 }

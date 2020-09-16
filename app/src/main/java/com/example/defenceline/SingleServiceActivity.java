@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -27,7 +28,8 @@ import java.util.Calendar;
 public class SingleServiceActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private EditText name, phoneNo, location, price;
-    private Button date, time, save;
+    private ImageButton date, time;
+    private Button save;
     private CheckBox liquid, powder, gel;
     private TextView dateView, timeView;
 
@@ -57,7 +59,6 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
         dateView = findViewById(R.id.date_view);
         timeView = findViewById(R.id.time_view);
 
-        mRootReference = FirebaseDatabase.getInstance().getReference();
         mProgressDialog = new ProgressDialog(this);
 
         date.setOnClickListener(new View.OnClickListener() {

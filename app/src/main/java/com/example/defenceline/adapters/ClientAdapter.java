@@ -23,6 +23,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
     private int resource;
     private ArrayList<Client> clients;
 
+    // client constructor
     public ClientAdapter(ArrayList<Client> clients) {
         this.clients = clients;
     }
@@ -34,7 +35,9 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
         TextView location;
         TextView time;
         TextView date;
+        TextView serviceType;
         TextView price;
+
 
         public clientViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -44,7 +47,9 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
             location = itemView.findViewById(R.id.location_field);
             time = itemView.findViewById(R.id.time_field);
             date = itemView.findViewById(R.id.date_field);
+            serviceType = itemView.findViewById(R.id.service_type_field);
             price = itemView.findViewById(R.id.price_field);
+
         }
     }
 
@@ -86,6 +91,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
         holder.date.setText(c.getDate());
         holder.time.setText(c.getTime());
         holder.price.setText(c.getPrice());
+        holder.serviceType.setText(c.getServiceType());
     }
 
     @Override

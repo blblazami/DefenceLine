@@ -122,7 +122,7 @@
         android:ems="10"
         android:gravity="left"
         android:hint="Name:"
-        android:inputType="textMultiLine"
+        android:inputType="textPersonName"
         android:lines="3"
         android:minLines="2"
         android:maxLines="4"
@@ -131,23 +131,44 @@
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_vertical" />
+        app:layout_constraintTop_toBottomOf="@+id/ll_vertical"/>
+
+    <EditText
+        android:id="@+id/item_no"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:drawablePadding="15dp"
+        android:background="@color/light_gray"
+        android:ems="10"
+        android:gravity="left"
+        android:hint="Item No."
+        android:inputType="numberDecimal"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"/>
 
     <EditText
         android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
         android:background="@color/light_gray"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Service Type:"
         android:padding="10dp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -156,7 +177,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@color/light_gray"
         android:drawablePadding="10dp"
@@ -167,7 +188,7 @@
         android:textColor="@android:color/black"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
@@ -190,26 +211,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quantity"/>
 
-    <EditText
-        android:id="@+id/phoneText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:drawablePadding="15dp"
-        android:background="@color/light_gray"
-        android:ems="10"
-        android:gravity="left"
-        android:hint="Customer Phone Number"
-        android:inputType="phone"
-        android:padding="10dp"
-        android:textColor="@android:color/black"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountant_name" />
-
     <LinearLayout
         android:id="@+id/ll2"
         android:layout_width="match_parent"
@@ -217,7 +218,7 @@
         android:layout_marginTop="12dp"
         android:layout_weight="1"
         android:weightSum="3"
-        app:layout_constraintTop_toBottomOf="@+id/phoneText"
+        app:layout_constraintTop_toBottomOf="@+id/accountant_name"
         tools:layout_editor_absoluteX="0dp">
 
         <EditText
@@ -261,7 +262,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <EditText
-            android:id="@+id/RemainingText"
+            android:id="@+id/discount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -282,48 +283,8 @@
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/DateOfReceiptText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:drawablePadding="15dp"
-        android:background="@color/light_gray"
-        android:ems="10"
-        android:gravity="left"
-        android:hint="Date Of Receipt"
-        android:inputType="date"
-        android:padding="10dp"
-        android:textColor="@android:color/black"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll2"/>
-
-    <EditText
-        android:id="@+id/item_no"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:drawablePadding="15dp"
-        android:background="@color/light_gray"
-        android:ems="10"
-        android:gravity="left"
-        android:hint="Item No."
-        android:inputType="numberDecimal"
-        android:padding="10dp"
-        android:textColor="@android:color/black"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"/>
-
     <Button
-        android:id="@+id/AddOrderButton"
+        android:id="@+id/create_invoice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -332,14 +293,14 @@
         android:paddingTop="10dp"
         android:paddingEnd="35dp"
         android:paddingBottom="10dp"
-        android:text="Add Order"
+        android:text="Create Invoice"
         android:textAllCaps="false"
         android:fontFamily="sans-serif-thin"
         android:textColor="@android:color/black"
-        android:textSize="22dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DateOfReceiptText"/>
+        app:layout_constraintTop_toBottomOf="@+id/ll2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

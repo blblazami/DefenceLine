@@ -2,28 +2,39 @@ package com.example.defenceline.model;
 
 public class Invoice {
 
-    private String billNo, name, date, serviceType, quantity, price, total, accountant;
+    private String date, invoiceNumber, name, itemNumber, serviceType, quantity, accountant, price, total, discount;
 
     public Invoice() {
     }
 
-    public Invoice(String billNo, String name, String date, String serviceType, String quantity, String price, String total, String accountant) {
-        this.billNo = billNo;
-        this.name = name;
+    public Invoice(String date, String invoiceNumber, String name, String itemNumber, String serviceType,
+                   String quantity, String accountant, String price, String total, String discount) {
         this.date = date;
+        this.invoiceNumber = invoiceNumber;
+        this.name = name;
+        this.itemNumber = itemNumber;
         this.serviceType = serviceType;
         this.quantity = quantity;
+        this.accountant = accountant;
         this.price = price;
         this.total = total;
-        this.accountant = accountant;
+        this.discount = discount;
     }
 
-    public String getBillNo() {
-        return billNo;
+    public String getDate() {
+        return date;
     }
 
-    public void setBillNo(String billNo) {
-        this.billNo = billNo;
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getInvoiceNumber() {
+        return invoiceNumber;
+    }
+
+    public void setInvoiceNumber(String invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
     }
 
     public String getName() {
@@ -34,12 +45,12 @@ public class Invoice {
         this.name = name;
     }
 
-    public String getDate() {
-        return date;
+    public String getItemNumber() {
+        return itemNumber;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setItemNumber(String itemNumber) {
+        this.itemNumber = itemNumber;
     }
 
     public String getServiceType() {
@@ -58,6 +69,14 @@ public class Invoice {
         this.quantity = quantity;
     }
 
+    public String getAccountant() {
+        return accountant;
+    }
+
+    public void setAccountant(String accountant) {
+        this.accountant = accountant;
+    }
+
     public String getPrice() {
         return price;
     }
@@ -74,11 +93,11 @@ public class Invoice {
         this.total = total;
     }
 
-    public String getAccountant() {
-        return accountant;
+    public String getDiscount() {
+        return discount;
     }
 
-    public void setAccountant(String accountant) {
-        this.accountant = accountant;
+    public void setDiscount(String discount) {
+        this.discount = discount;
     }
 }

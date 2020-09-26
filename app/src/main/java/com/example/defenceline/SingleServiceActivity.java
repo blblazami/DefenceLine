@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.example.defenceline.model.Client;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

@@ -20,9 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
-public class SingleClientInvoiceActivity extends AppCompatActivity {
+public class CreateInvoiceActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextView dateView;
@@ -36,7 +35,7 @@ public class SingleClientInvoiceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_client_invoice);
+        setContentView(R.layout.activity_create_invoice);
 
         toolbar = findViewById(R.id.toolbar);
         dateView = findViewById(R.id.datetextview);
@@ -52,8 +51,9 @@ public class SingleClientInvoiceActivity extends AppCompatActivity {
         addInvoice = findViewById(R.id.create_invoice);
         mProgressDialog = new ProgressDialog(this);
 
+        // to generate invoice number
         mPreferences = getSharedPreferences("OsDB", MODE_PRIVATE);
-        invoiceNumber = mPreferences.getString("OsId","10001");
+        invoiceNumber.setText(mPreferences.getString("OsId", "10001"));
         // to show date on text view
         DateFormat df = new SimpleDateFormat("dd/MM/yy");
         Date dateobj = new Date();
@@ -78,7 +78,7 @@ public class SingleClientInvoiceActivity extends AppCompatActivity {
                         || TextUtils.isEmpty(txtDescription) || TextUtils.isEmpty(txtQuantity)
                         || TextUtils.isEmpty(txtAccountant) || TextUtils.isEmpty(txtPrice)
                         || TextUtils.isEmpty(txtTotal) || TextUtils.isEmpty(txtDiscount)) {
-                    Toast.makeText(SingleClientInvoiceActivity.this, "Mandatory Missed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateInvoiceActivity.this, "Mandatory Missed", Toast.LENGTH_SHORT).show();
                 } else {
                     createInvoice(txtDate, txtInvoiceNumber, txtName, txtItemNumber, txtDescription, txtQuantity, txtAccountant, txtPrice, txtTotal, txtDiscount);
                 }

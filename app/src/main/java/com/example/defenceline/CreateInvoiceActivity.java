@@ -1,5 +1,6 @@
 package com.example.defenceline;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.defenceline.model.Invoice;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,7 +32,13 @@ public class CreateInvoiceActivity extends AppCompatActivity {
     private EditText name, itemNumber, description, quantity, price, total, discount;
     private Button addInvoice;
     private ProgressDialog mProgressDialog;
-    private SharedPreferences mPreferences;
+    private int mInvoiceCounter;
+
+    @Override
+    protected void onDestroy() {
+        FirebaseManager.stopInvoiceCounterListener();
+        super.onDestroy();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +60,15 @@ public class CreateInvoiceActivity extends AppCompatActivity {
         mProgressDialog = new ProgressDialog(this);
 
         // to generate invoice number
-        mPreferences = getSharedPreferences("OsDB", MODE_PRIVATE);
-        invoiceNumber.setText(mPreferences.getString("OsId", "10001"));
+
+        FirebaseManager.getInvoiceCounter(new FirebaseManager.OnCounterReceived() {
+            @Override
+            public void onReceived(int invoiceCounter) {
+                mInvoiceCounter = invoiceCounter;
+                invoiceNumber.setText(String.valueOf(mInvoiceCounter));
+                Toast.makeText(CreateInvoiceActivity.this, "Hiiiii", Toast.LENGTH_SHORT).show();
+            }
+        });
         // to show date on text view
         DateFormat df = new SimpleDateFormat("dd/MM/yy");
         Date dateobj = new Date();
@@ -98,7 +113,13 @@ public class CreateInvoiceActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 mProgressDialog.dismiss();
-
+                FirebaseManager.updateInvoiceCounter(++mInvoiceCounter);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                mProgressDialog.dismiss();
+                Toast.makeText(CreateInvoiceActivity.this,e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }

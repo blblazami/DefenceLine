@@ -60,7 +60,6 @@ public class CreateInvoiceActivity extends AppCompatActivity {
         mProgressDialog = new ProgressDialog(this);
 
         // to generate invoice number
-
         FirebaseManager.getInvoiceCounter(new FirebaseManager.OnCounterReceived() {
             @Override
             public void onReceived(int invoiceCounter) {

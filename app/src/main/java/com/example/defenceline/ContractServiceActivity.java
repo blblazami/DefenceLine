@@ -29,7 +29,8 @@ public class ContractServiceActivity extends AppCompatActivity implements DatePi
     private ImageButton date, time;
     private Button save;
     private CheckBox liquid, powder, gel;
-    private TextView dateView, timeView, invoiceDate, invoiceNumber, accountant;;
+    private TextView dateView, timeView, invoiceDate, invoiceNumber, accountant;
+    private int mInvoiceCounter;
 
     private int mHour, mMinutes;
 
@@ -52,8 +53,8 @@ public class ContractServiceActivity extends AppCompatActivity implements DatePi
         price = findViewById(R.id.enter_price);
         total = findViewById(R.id.total);
         discount = findViewById(R.id.discount);
-        date = findViewById(R.id.chose_date_btn_id);
-        time = findViewById(R.id.chose_time_btn_id);
+        date = findViewById(R.id.choose_date_btn_id);
+        time = findViewById(R.id.choose_time_btn_id);
         save = findViewById(R.id.save_button);
         liquid = findViewById(R.id.liquid_chkbox);
         powder = findViewById(R.id.powder_chkbox);

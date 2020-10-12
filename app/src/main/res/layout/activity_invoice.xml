@@ -8,54 +8,30 @@
     android:background="@drawable/red_cover"
     tools:context=".InvoiceActivity">
 
-    <LinearLayout
-        android:id="@+id/main_LL"
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="10dp"
+        app:srcCompat="@drawable/ic_back"/>
+
+    <ImageView
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:padding="10dp"
+        app:srcCompat="@drawable/ic_search"/>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/create_invoice"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/background_gray"
-            android:gravity="center"
-            android:text="Create Invoice"
-            android:textColor="@color/light_red"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/show_client_invoice"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/background_gray"
-            android:gravity="center"
-            android:text="Client Invoice"
-            android:textColor="@color/light_red"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/show_company_invoice"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/background_gray"
-            android:gravity="center"
-            android:text="Company Invoice"
-            android:textColor="@color/light_red"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_below="@+id/back"
+        android:id="@+id/invoice_rv"/>
 
 </RelativeLayout>

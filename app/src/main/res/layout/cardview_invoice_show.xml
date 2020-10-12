@@ -35,7 +35,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/logoImageView"
+                        android:id="@+id/stamp"
                         android:layout_width="133dp"
                         android:layout_height="112dp"
                         android:src="@drawable/stamp"/>
@@ -73,7 +73,7 @@
                                     android:text="Date" />
 
                                 <TextView
-                                    android:id="@+id/dateTextView"
+                                    android:id="@+id/invoice_date"
                                     android:layout_gravity="center"
                                     android:layout_width="wrap_content"
                                     android:textSize="14dp"
@@ -94,16 +94,16 @@
                                     android:textSize="15dp"
                                     android:textColor="@color/black"
                                     android:layout_height="wrap_content"
-                                    android:text="DUE Date" />
+                                    android:text="Invoice Number" />
 
                                 <TextView
-                                    android:id="@+id/dateOfReceiptTextView"
+                                    android:id="@+id/invoice_number"
                                     android:layout_gravity="center"
                                     android:layout_width="wrap_content"
                                     android:textSize="14dp"
                                     android:textColor="#EE6A90B5"
                                     android:layout_height="wrap_content"
-                                    android:hint="date" />
+                                    android:hint="10001" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -117,42 +117,43 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/ordernum"
-                        android:layout_alignParentRight="true"
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
                         android:layout_marginTop="15dp"
-                        android:gravity="center"
+                        android:layout_marginRight="35dp"
                         android:fontFamily="sans-serif-medium"
-                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:text="Name:"
                         android:textColor="@color/colorAccent"
-                        android:text="Order Number"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/orderNumTextView"
+                        android:id="@+id/client_name"
                         android:layout_width="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_below="@+id/ordernum"
+                        android:layout_below="@+id/name"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
                         android:layout_marginRight="30dp"
                         android:gravity="center"
-                        android:hint="1002"/>
+                        android:hint="Belal"/>
                     <TextView
-                        android:id="@+id/phonenumber"
+                        android:id="@+id/phone_number"
                         android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
                         android:gravity="center"
-                        android:layout_below="@+id/orderNumTextView"
+                        android:layout_below="@+id/client_name"
                         android:textColor="@color/colorAccent"
                         android:textSize="16dp"
                         android:text="Phone number"
                         android:layout_height="wrap_content"/>
                     <TextView
-                        android:id="@+id/phoneTextView"
+                        android:id="@+id/phone_num"
                         android:layout_width="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_below="@+id/phonenumber"
+                        android:layout_below="@+id/phone_number"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
                         android:layout_marginRight="20dp"
@@ -165,7 +166,7 @@
                         android:layout_width="wrap_content"
                         android:gravity="center"
                         android:textColor="@color/colorAccent"
-                        android:layout_below="@+id/phoneTextView"
+                        android:layout_below="@+id/phone_num"
                         android:textSize="16dp"
                         android:text="Accountant:"
                         android:layout_height="wrap_content"/>
@@ -262,7 +263,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/priceTextView"
+                        android:id="@+id/price_view"
                         android:layout_width="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:hint="3500"
@@ -280,7 +281,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/depositTextView"
+                        android:id="@+id/total_view"
                         android:layout_width="wrap_content"
                         android:hint="2000"
                         android:layout_marginLeft="0dp"

@@ -32,6 +32,7 @@ public class FirebaseManager {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int invoiceCounter = snapshot.getValue(Integer.class);
                 onCounterReceived.onReceived(invoiceCounter);
+                updateInvoiceCounter(invoiceCounter);
             }
 
             @Override

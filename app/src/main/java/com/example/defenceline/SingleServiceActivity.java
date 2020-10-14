@@ -173,6 +173,12 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
             service = "Liquid, Gel";
         } else if (powder.isChecked() && gel.isChecked()){
             service = "Powder, Gel";
+        } else if (liquid.isChecked()){
+            service = "Liquid";
+        } else if (powder.isChecked()) {
+            service = "Powder";
+        } else if (gel.isChecked()) {
+            service = "Gel";
         } else {
             service = null;
         }

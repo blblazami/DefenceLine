@@ -16,9 +16,6 @@ public class InvoiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invoice);
 
-        clientInvoiceShow = findViewById(R.id.show_client_invoice);
-        companyInvoiceShow = findViewById(R.id.show_company_invoice);
-
         clientInvoiceShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

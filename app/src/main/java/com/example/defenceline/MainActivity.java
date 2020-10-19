@@ -26,7 +26,7 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayout mainLinearLayout;
-    private TextView singleService, contractService, invoice, receiptVoucher, clientsData, companiesData;
+    private TextView singleService, contractService, invoice, visitTable, receiptVoucher, clientsData, companiesData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         singleService = findViewById(R.id.single_service_id);
         contractService = findViewById(R.id.contract_service);
         invoice = findViewById(R.id.invoice_id);
+        visitTable = findViewById(R.id.visit_table);
         receiptVoucher = findViewById(R.id.receipt_voucher);
         clientsData = findViewById(R.id.clients_data);
         companiesData = findViewById(R.id.companies_data);
@@ -59,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, InvoiceActivity.class));
+            }
+        });
+
+        visitTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, VisitTableActivity.class));
             }
         });
 

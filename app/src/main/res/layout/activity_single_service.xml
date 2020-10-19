@@ -90,7 +90,7 @@
                 android:layout_margin="3dp"
                 android:fontFamily="monospace"
                 android:gravity="center"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/invoice_number_view"
@@ -102,7 +102,7 @@
                 android:layout_margin="3dp"
                 android:fontFamily="monospace"
                 android:gravity="center"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
 
         </LinearLayout>
 
@@ -135,7 +135,7 @@
             android:ems="10"
             android:hint="Phone No:"
             android:textColorHint="@color/white"
-            android:inputType="phone"
+            android:inputType="text"
             android:padding="8dp"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"/>

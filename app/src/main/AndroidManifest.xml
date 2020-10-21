@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateVisitActivity"></activity>
+        <activity android:name=".CreateReceiptVoucherActivity"></activity>
+        <activity android:name=".CreateVisitActivity" />
         <activity android:name=".VisitTableActivity" />
         <activity android:name=".CompanyDataActivity" />
         <activity android:name=".StartActivity">

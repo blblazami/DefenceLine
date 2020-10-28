@@ -17,15 +17,6 @@
         android:padding="10dp"
         app:srcCompat="@drawable/ic_back"/>
 
-    <ImageView
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:padding="10dp"
-        app:srcCompat="@drawable/ic_search"/>
-
     <LinearLayout
         android:id="@+id/main_LL"
         android:layout_width="match_parent"
@@ -48,7 +39,7 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/show_visit"
+            android:id="@+id/show_voucher"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="20dp"

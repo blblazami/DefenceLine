@@ -28,7 +28,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
         this.clients = clients;
     }
 
-    // holder class for recycler view
+    // holder class for recyclerview
     public class clientViewHolder extends RecyclerView.ViewHolder{
         TextView name;
         TextView phone;

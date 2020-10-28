@@ -10,6 +10,7 @@
     android:padding="5dp">
 
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/mainCardview"
         android:layout_marginTop="10dp"
@@ -93,16 +94,16 @@
                                     android:textSize="15dp"
                                     android:textColor="@color/black"
                                     android:layout_height="wrap_content"
-                                    android:text="Invoice Number" />
+                                    android:text="Voucher Number" />
 
                                 <TextView
-                                    android:id="@+id/invoice_number"
+                                    android:id="@+id/voucher_number"
                                     android:layout_gravity="center"
                                     android:layout_width="wrap_content"
                                     android:textSize="14dp"
                                     android:textColor="#EE6A90B5"
                                     android:layout_height="wrap_content"
-                                    android:hint="10001" />
+                                    android:hint="1001" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -139,27 +140,27 @@
                         android:gravity="center"
                         android:hint="Belal"/>
                     <TextView
-                        android:id="@+id/phone_number"
+                        android:id="@+id/sum_of"
                         android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
                         android:gravity="center"
                         android:layout_below="@+id/client_name"
                         android:textColor="@color/colorAccent"
                         android:textSize="16dp"
-                        android:text="Phone number"
+                        android:text="Sum Of:"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/phone_num"
                         android:layout_width="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_below="@+id/phone_number"
+                        android:layout_below="@+id/sum_of"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
                         android:layout_marginRight="20dp"
                         android:gravity="center"
                         android:hint="05*******"/>
                     <TextView
-                        android:id="@+id/accountant"
+                        android:id="@+id/receiver"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="30dp"
                         android:layout_width="wrap_content"
@@ -167,16 +168,16 @@
                         android:textColor="@color/colorAccent"
                         android:layout_below="@+id/phone_num"
                         android:textSize="16dp"
-                        android:text="Accountant:"
+                        android:text="Receiver:"
                         android:layout_height="wrap_content"/>
                     <TextView
-                        android:id="@+id/accountant_name"
+                        android:id="@+id/receiver_name"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:gravity="center"
-                        android:layout_below="@+id/accountant"
+                        android:layout_below="@+id/receiver"
                         android:lines="2"
                         android:textSize="16dp"
                         android:text="Zakaria Alazami"

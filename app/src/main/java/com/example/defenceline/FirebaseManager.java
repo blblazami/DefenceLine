@@ -24,7 +24,7 @@ public class FirebaseManager {
         }
     }
 
-    public static void getInvoiceCounter(final OnCounterReceived onCounterReceived) {
+    public static void getCounter(String counterName, final OnCounterReceived onCounterReceived) {
         if (mDatabaseReference != null)
             return;
         mValueEventListener = new ValueEventListener() {
@@ -32,7 +32,6 @@ public class FirebaseManager {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int invoiceCounter = snapshot.getValue(Integer.class);
                 onCounterReceived.onReceived(invoiceCounter);
-                updateInvoiceCounter(invoiceCounter); // i added this line
             }
 
             @Override
@@ -40,11 +39,14 @@ public class FirebaseManager {
 
             }
         };
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference(FirebaseKeys.INVOICE_COUNTER);
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference(counterName);
         mDatabaseReference.addValueEventListener(mValueEventListener);
     }
 
-    public static void updateInvoiceCounter(int invoiceCounter) {
-        FirebaseDatabase.getInstance().getReference(FirebaseKeys.INVOICE_COUNTER).setValue(invoiceCounter);
+    //Method to update counter in database,
+    // takes counter name and the new counter number as parameters
+    public static void updateCounter(String counterName, int invoiceCounter) {
+        FirebaseDatabase.getInstance().getReference(counterName).setValue(invoiceCounter);
     }
+
 }

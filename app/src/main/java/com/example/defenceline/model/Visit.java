@@ -10,16 +10,14 @@ public class Visit {
     }
 
     public Visit(String visitDate, String visitNumber, String name, String placeHolder, String serviceProvider,
-                 String signature, String date, String notes, String stamp) {
+                  String date, String notes) {
         this.visitDate = visitDate;
         this.visitNumber = visitNumber;
         this.name = name;
         this.placeHolder = placeHolder;
         this.serviceProvider = serviceProvider;
-        this.signature = signature;
         this.date = date;
         this.notes = notes;
-        this.stamp = stamp;
     }
 
     // getters & setters

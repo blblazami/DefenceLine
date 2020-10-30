@@ -1,5 +1,6 @@
 package com.example.defenceline;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -18,6 +19,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.defenceline.model.Client;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -90,13 +92,13 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         timeView.setText(hourOfDay + ":" + minute);
                     }
-                },mHour,mMinutes,false);
+                }, mHour, mMinutes, false);
                 timePickerDialog.show();
             }
         });
 
         // to generate invoice number
-        FirebaseManager.getInvoiceCounter(new FirebaseManager.OnCounterReceived() {
+        FirebaseManager.getCounter(FirebaseKeys.INVOICE_COUNTER, new FirebaseManager.OnCounterReceived() {
             @Override
             public void onReceived(int invoiceCounter) {
                 mInvoiceCounter = invoiceCounter;
@@ -134,9 +136,9 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
                         || TextUtils.isEmpty(txtInvoiceDate) || TextUtils.isEmpty(txtInvoiceNumber)
                         || TextUtils.isEmpty(txtPrice) || TextUtils.isEmpty(txtTotal) || TextUtils.isEmpty(txtDiscount)
                         || TextUtils.isEmpty(txtDate) || TextUtils.isEmpty(txtTime)
-                        || serviceType == null){
+                        || serviceType == null) {
                     Toast.makeText(SingleServiceActivity.this, "Mandatory Missed", Toast.LENGTH_SHORT).show();
-                } else if (txtPhoneNo.length() < 10){
+                } else if (txtPhoneNo.length() < 10) {
                     Toast.makeText(SingleServiceActivity.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
                 } else {
                     registerClient(txtInvoiceDate, txtInvoiceNumber, txtName, txtPhoneNo, txtLocation, txtItemNumber,
@@ -157,23 +159,31 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
             @Override
             public void onSuccess(Void aVoid) {
                 mProgressDialog.dismiss();
+                FirebaseManager.updateCounter(FirebaseKeys.INVOICE_COUNTER, ++mInvoiceCounter);
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                mProgressDialog.dismiss();
+                Toast.makeText(SingleServiceActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
     }
 
     // checking services
-    public String serviceChecked(){
+    public String serviceChecked() {
         String service = null;
-        if (liquid.isChecked() && powder.isChecked() && gel.isChecked()){
+        if (liquid.isChecked() && powder.isChecked() && gel.isChecked()) {
             service = "Liquid, Powder, Gel";
-        } else if (liquid.isChecked() && powder.isChecked()){
+        } else if (liquid.isChecked() && powder.isChecked()) {
             service = "Liquid, Powder";
-        } else if (liquid.isChecked() && gel.isChecked()){
+        } else if (liquid.isChecked() && gel.isChecked()) {
             service = "Liquid, Gel";
-        } else if (powder.isChecked() && gel.isChecked()){
+        } else if (powder.isChecked() && gel.isChecked()) {
             service = "Powder, Gel";
-        } else if (liquid.isChecked()){
+        } else if (liquid.isChecked()) {
             service = "Liquid";
         } else if (powder.isChecked()) {
             service = "Powder";

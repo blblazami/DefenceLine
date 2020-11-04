@@ -70,10 +70,10 @@
                                     android:textSize="15dp"
                                     android:textColor="@color/black"
                                     android:layout_height="wrap_content"
-                                    android:text="Date" />
+                                    android:text="Date"/>
 
                                 <TextView
-                                    android:id="@+id/invoice_date"
+                                    android:id="@+id/voucher_date"
                                     android:layout_gravity="center"
                                     android:layout_width="wrap_content"
                                     android:textSize="14dp"
@@ -150,7 +150,7 @@
                         android:text="Sum Of:"
                         android:layout_height="wrap_content"/>
                     <TextView
-                        android:id="@+id/phone_num"
+                        android:id="@+id/sum_of_view"
                         android:layout_width="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_below="@+id/sum_of"
@@ -158,7 +158,7 @@
                         android:textSize="16dp"
                         android:layout_marginRight="20dp"
                         android:gravity="center"
-                        android:hint="05*******"/>
+                        android:hint="250"/>
                     <TextView
                         android:id="@+id/receiver"
                         android:layout_alignParentRight="true"
@@ -166,7 +166,7 @@
                         android:layout_width="wrap_content"
                         android:gravity="center"
                         android:textColor="@color/colorAccent"
-                        android:layout_below="@+id/phone_num"
+                        android:layout_below="@+id/sum_of_view"
                         android:textSize="16dp"
                         android:text="Receiver:"
                         android:layout_height="wrap_content"/>
@@ -184,131 +184,6 @@
                         android:layout_height="wrap_content"/>
 
                 </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="5dp"
-                android:layout_width="match_parent"
-                android:background="@color/light_gray"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/price"
-                        android:layout_width="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="Price"
-                        android:textSize="18dp"
-                        android:fontFamily="sans-serif-condensed-light"
-                        android:textColor="@color/black"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/total"
-                        android:layout_width="wrap_content"
-                        android:text="Total"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="18dp"
-                        android:fontFamily="sans-serif-condensed-light"
-                        android:textColor="@color/black"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/remaining"
-                        android:layout_width="wrap_content"
-                        android:text="Remaining"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="18dp"
-                        android:fontFamily="sans-serif-condensed-light"
-                        android:textColor="@color/black"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginLeft="6dp"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/price_view"
-                        android:layout_width="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:hint="3500"
-                        android:textSize="18dp"
-                        android:fontFamily="sans-serif-condensed-light"
-                        android:textColor="@color/colorAccent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/total_view"
-                        android:layout_width="wrap_content"
-                        android:hint="2000"
-                        android:layout_marginLeft="0dp"
-                        android:textSize="18dp"
-                        android:fontFamily="sans-serif-condensed-light"
-                        android:textColor="@color/colorAccent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/remainingTextView"
-                        android:layout_width="wrap_content"
-                        android:hint="1500"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="18dp"
-                        android:fontFamily="sans-serif-condensed-light"
-                        android:textColor="@color/dark_red"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
 
             </LinearLayout>
 

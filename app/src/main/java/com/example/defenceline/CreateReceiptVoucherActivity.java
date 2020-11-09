@@ -22,6 +22,7 @@ public class CreateReceiptVoucherActivity extends AppCompatActivity {
     private EditText name, sumOf, bankName, transferDate, providedService;
     private CheckBox cash, cheque, bankTransfer;
     private Button save;
+    private int mVoucherCounter;
 
     // Progress Dialog
     ProgressDialog mProgressDialog;
@@ -47,7 +48,14 @@ public class CreateReceiptVoucherActivity extends AppCompatActivity {
         mProgressDialog = new ProgressDialog(this);
 
         // to generate voucher number
-        // code must be here!!
+        FirebaseManager.getCounter(FirebaseKeys.VOUCHER_COUNTER, new FirebaseManager.OnCounterReceived() {
+            @Override
+            public void onReceived(int voucherCounter) {
+                mVoucherCounter = voucherCounter;
+                voucherCounter.setText(String.valueOf(mVoucherCounter));
+                Toast.makeText(CreateReceiptVoucherActivity.this, "Hiiiii", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override

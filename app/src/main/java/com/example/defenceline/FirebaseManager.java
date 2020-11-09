@@ -43,7 +43,7 @@ public class FirebaseManager {
         mDatabaseReference.addValueEventListener(mValueEventListener);
     }
 
-    //Method to update counter in database,
+    // Method to update counter in database,
     // takes counter name and the new counter number as parameters
     public static void updateCounter(String counterName, int invoiceCounter) {
         FirebaseDatabase.getInstance().getReference(counterName).setValue(invoiceCounter);

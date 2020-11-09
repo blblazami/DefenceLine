@@ -25,8 +25,8 @@ import java.util.Date;
 
 public class CreateVisitActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    private TextView visitDate, visitNumber, dateView, serviceProvider;
-    private EditText name, placeHolder, notes;
+    private TextView visitDate, dateView, serviceProvider;
+    private EditText name, placeHolder, notes, visitNumber;
     private ImageButton date;
     private Button save;
 
@@ -39,7 +39,7 @@ public class CreateVisitActivity extends AppCompatActivity implements DatePicker
         setContentView(R.layout.activity_create_visit);
 
         visitDate = findViewById(R.id.datetextview);
-        visitNumber = findViewById(R.id.visit_number);
+        visitNumber = findViewById(R.id.visit_number_view);
         serviceProvider = findViewById(R.id.service_provider);
         name = findViewById(R.id.client_name);
         placeHolder = findViewById(R.id.place_holder);

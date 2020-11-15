@@ -48,7 +48,8 @@ public class VisitTableActivity extends AppCompatActivity {
         showVisits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(VisitTableActivity.this, ShowVisitsActivity.class));
+                finish();
             }
         });
 

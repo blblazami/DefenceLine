@@ -16,6 +16,10 @@ import com.example.defenceline.model.Voucher;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class CreateReceiptVoucherActivity extends AppCompatActivity {
 
     private TextView dateView, voucherNumberView, receiverName;
@@ -52,10 +56,15 @@ public class CreateReceiptVoucherActivity extends AppCompatActivity {
             @Override
             public void onReceived(int voucherCounter) {
                 mVoucherCounter = voucherCounter;
-                voucherCounter.setText(String.valueOf(mVoucherCounter));
+                voucherNumberView.setText(String.valueOf(mVoucherCounter));
                 Toast.makeText(CreateReceiptVoucherActivity.this, "Hiiiii", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // to show date on text view
+        DateFormat df = new SimpleDateFormat("dd/MM/yy");
+        Date dateobj = new Date();
+        dateView.setText(df.format(dateobj));
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,9 +82,7 @@ public class CreateReceiptVoucherActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(txtDateView) || TextUtils.isEmpty(txtVoucherNumberView)
                 || TextUtils.isEmpty(txtReceiverName) || TextUtils.isEmpty(txtName)
-                || TextUtils.isEmpty(txtSumOf) || TextUtils.isEmpty(txtBankName)
-                || TextUtils.isEmpty(txtTransferDate) || TextUtils.isEmpty(txtProvidedService)
-                || paymentMethod == null){
+                || TextUtils.isEmpty(txtSumOf) || TextUtils.isEmpty(txtProvidedService) || paymentMethod == null){
                     Toast.makeText(CreateReceiptVoucherActivity.this, "Mandatory Missed", Toast.LENGTH_SHORT).show();
                 } else {
                     createReceiptVoucher(txtDateView, txtVoucherNumberView, txtReceiverName, txtName, txtSumOf

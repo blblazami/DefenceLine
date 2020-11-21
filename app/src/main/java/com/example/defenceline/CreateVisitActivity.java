@@ -89,8 +89,9 @@ public class CreateVisitActivity extends AppCompatActivity implements DatePicker
 
         mProgressDialog.setMessage("Please Wait");
         mProgressDialog.show();
+        String id = FirebaseDatabase.getInstance().getReference().push().getKey();
         Visit visit = new Visit(visitDate, visitNumber, name, placeHolder, serviceProvider, dateView, notes);
-        FirebaseDatabase.getInstance().getReference("Visits").setValue(visit).addOnSuccessListener(new OnSuccessListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("Visits").child(id).setValue(visit).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 mProgressDialog.dismiss();

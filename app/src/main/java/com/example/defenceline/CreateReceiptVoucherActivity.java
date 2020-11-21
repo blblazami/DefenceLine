@@ -57,7 +57,6 @@ public class CreateReceiptVoucherActivity extends AppCompatActivity {
             public void onReceived(int voucherCounter) {
                 mVoucherCounter = voucherCounter;
                 voucherNumberView.setText(String.valueOf(mVoucherCounter));
-                Toast.makeText(CreateReceiptVoucherActivity.this, "Hiiiii", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -94,14 +93,21 @@ public class CreateReceiptVoucherActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FirebaseManager.stopInvoiceCounterListener();
+    }
+
     private void createReceiptVoucher(String dateView, String voucherNumberView, String receiverName, String name, String sumOf,
                                       String bankName, String transferDate, String providedService, String paymentMethod) {
 
         mProgressDialog.setMessage("Please Wait");
         mProgressDialog.show();
+        String id = FirebaseDatabase.getInstance().getReference().push().getKey();
         Voucher voucher = new Voucher(dateView, voucherNumberView, receiverName, name, sumOf
         , bankName, transferDate, providedService, paymentMethod);
-        FirebaseDatabase.getInstance().getReference("Vouchers").setValue(voucher).addOnSuccessListener(new OnSuccessListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("Vouchers").child(id).setValue(voucher).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 mProgressDialog.dismiss();

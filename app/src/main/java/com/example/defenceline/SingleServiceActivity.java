@@ -103,7 +103,6 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
             public void onReceived(int invoiceCounter) {
                 mInvoiceCounter = invoiceCounter;
                 invoiceNumber.setText(String.valueOf(mInvoiceCounter));
-                Toast.makeText(SingleServiceActivity.this, "Hiiiii", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -146,6 +145,12 @@ public class SingleServiceActivity extends AppCompatActivity implements DatePick
                 }
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FirebaseManager.stopInvoiceCounterListener();
     }
 
     private void registerClient(String invoiceDate, String invoiceNumber, String name, String phoneNo, String location, String itemNumber,

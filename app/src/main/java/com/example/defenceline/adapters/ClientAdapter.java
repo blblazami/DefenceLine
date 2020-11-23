@@ -30,6 +30,8 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
 
     // holder class for recyclerview
     public class clientViewHolder extends RecyclerView.ViewHolder{
+        TextView invoiceNumber;
+        TextView invoiceDate;
         TextView name;
         TextView phone;
         TextView location;
@@ -42,6 +44,8 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
         public clientViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            invoiceNumber = itemView.findViewById(R.id.invoice_field);
+            invoiceDate = itemView.findViewById(R.id.invoice_date_field);
             name = itemView.findViewById(R.id.name_field);
             phone = itemView.findViewById(R.id.phone_field);
             location = itemView.findViewById(R.id.location_field);
@@ -85,6 +89,8 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.clientView
     @Override
     public void onBindViewHolder(@NonNull clientViewHolder holder, int position) {
         Client c = clients.get(position);
+        holder.invoiceNumber.setText(c.getInvoiceNumber());
+        holder.invoiceDate.setText(c.getInvoiceDate());
         holder.name.setText(c.getName());
         holder.phone.setText(c.getPhoneNo());
         holder.location.setText(c.getLocation());

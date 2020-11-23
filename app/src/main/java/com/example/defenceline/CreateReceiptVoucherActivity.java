@@ -111,6 +111,8 @@ public class CreateReceiptVoucherActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 mProgressDialog.dismiss();
+                FirebaseManager.updateVoucher(FirebaseKeys.VOUCHER_COUNTER, ++mVoucherCounter);
+                finish();
             }
         });
     }

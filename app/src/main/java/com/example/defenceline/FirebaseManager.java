@@ -49,4 +49,8 @@ public class FirebaseManager {
         FirebaseDatabase.getInstance().getReference(counterName).setValue(invoiceCounter);
     }
 
+    public static void updateVoucher(String counterName, int voucherCounter){
+        FirebaseDatabase.getInstance().getReference(counterName).setValue(voucherCounter);
+    }
+
 }
